@@ -12,6 +12,7 @@ public enum ResultEnum {
     FAIL("02","参数错误"),
 
     USERNOTFOUND("1000","用户名、密码错误"),
+    USEREXISTS("1001","用户名已存在"),
     ;
 
 

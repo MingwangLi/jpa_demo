@@ -10,4 +10,6 @@ import com.szjzht.demo.jpa.entity.User;
 public interface UserService {
     User getUserByUsername(String username);
 
+    void saveUser(User user);
+
 }

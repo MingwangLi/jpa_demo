@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
         User user = userOptional.orElse(null);
         return user;
     }
+
+    @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }

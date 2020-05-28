@@ -1,7 +1,7 @@
 package com.szjzht.demo.jpa.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -16,14 +16,15 @@ import java.util.Date;
 public class Base implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private String id;
+    @GeneratedValue(generator = "uuidGenerator")
+    @GenericGenerator(name = "uuidGenerator", strategy = "uuid")
+    public String id;
 
-    private Date createTime;
+    public Date createTime;
 
-    private Date updateTime;
+    public Date updateTime;
 
-    private Integer deleted;
+    public Integer deleted = 0;
 
     public String getId() {
         return id;
