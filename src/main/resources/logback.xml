@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="120 seconds" debug="false">
+
+    <property name="log.base" value="logs/jpa/jpa" />
+
+    <appender name="FILEOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <File>${log.base}.log</File>
+
+        <encoder>
+            <pattern>%-30(%d{HH:mm:ss.SSS} %-5level [%thread]) %logger{50}: %msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+
+            <fileNamePattern>${log.base}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+
+            <maxFileSize>100MB</maxFileSize>
+
+            <maxHistory>60</maxHistory>
+
+            <totalSizeCap>20GB</totalSizeCap>
+
+        </rollingPolicy>
+
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>%-30(%d{HH:mm:ss.SSS} %-5level [%thread]) %logger{50}: %msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+
+    </appender>
+
+    <logger name="com.szjzht.demo.jpa" level="debug"/>
+
+    <root level="info">
+        <appender-ref ref="FILEOUT" />
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
